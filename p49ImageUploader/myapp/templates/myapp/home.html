@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Uploader</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
+</head>
+<body>
+    {% comment %} multipart/from-data  {% endcomment %}
+    <div class="container">
+       
+        <div class="py-5 text-center text-white">
+            <h1 class="mb-5">Uploade Image</h1>
+            <form action="" method ="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{form}}
+                <input type="submit"class="btn btn-danger" value="Upload">
+            </form>
+        </div>
+
+    </div>
+
+   
+        
+        <div class="row">
+            
+            {% for x in img %}
+                <div class="col-sm-4">
+                    <div class="card m-2">
+                        <img src="{{x.photos.url}}" alt="" class="card-img-top" height="200">
+                    <div class="card-footer">
+                        <small class="text-muted">{{x.date}}</small>
+                    </div>
+                    </div>
+                </div>
+            {% endfor %}
+    </div>
+    
+
+
+
+    
+</body>
+</html>
